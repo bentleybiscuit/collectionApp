@@ -8,7 +8,7 @@ function connectDb() {
 }
 
 function getDatafromDB($db) {
-    $query = $db->prepare("SELECT `commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
+    $query = $db->prepare("SELECT `image`,`commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
     //this next line executes the query to run the code
     $query->execute();
     //create a variable to catch the results
@@ -18,10 +18,10 @@ function getDatafromDB($db) {
 
 }
 
-//Josh
+
 function displayItems(array $result) :string {
     $htmlOut = "";
-    $rowNames = ["commonName" => "Common Name:",
+    $rowNames = ["image", "commonName" => "Common Name:",
         "scientificName" => "Scientific Name:",
         "kingdom" => "Kingdom:",
         "genomeMbp" => "Genome Size (Mbp):"];
@@ -30,13 +30,18 @@ function displayItems(array $result) :string {
         $htmlOut .= "<div class=\"item\">";
         $htmlOut .="<ul>";
         foreach ($asOrganism as $key => $attribute) {
-            //if $key is background image then $htmlOut .= "<div class=\"item\" style =
-            $htmlOut .= "<li>$rowNames[$key] $attribute </li>";
-
-        }
+            if($key ==="image") {
+                $htmlOut .= '<div class="item" style="background-image: url("'.$attribute.'")>';
+            }
+                else {
+                    $htmlOut .= "<li>$rowNames[$key] $attribute </li>";
+                }
+            }
+         }
         $htmlOut .="</ul>";
         $htmlOut .= "</div>";
-    }
+
     return $htmlOut;
-}
+    }
+
 
