@@ -1,19 +1,16 @@
 <?php
 require_once 'functions.php';
 
-//create database connection
-$db = new PDO('mysql:host=db; dbname=charlotteCollection', 'root', 'password');
+$db = connectDb();
+$modelOrganisms= getDatafromDB($db);
 
-//put settings on the fetch so it comes back as associative array
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+foreach ($modelOrganisms as $asOrganism) {
+    foreach ($asOrganism as $field=>$value){
+        echo $field . $value;
+    }
 
-//preparing a statement in order to send it to the db
-$query = $db->prepare("SELECT `commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
-//this next line executes the query to run the code
-$query->execute();
-//create a variable to catch the results
-$result = $query->fetchAll();
-//var_dump($result);
+}
+
 ?>
 
 <html>
