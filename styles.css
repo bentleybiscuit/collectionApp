@@ -8,7 +8,7 @@ html {
 
 body {
     font-family: arial, sans-serif;
-    margin: 40;
+    margin: 40px;
 }
 
 header  {
@@ -17,11 +17,11 @@ header  {
 /*adding background images as a nice to have later*/
 .items {
     float: left;
-    width: 25%;
-    background-color: #ffe4c4;
-    margin: 10px;
-    background-repeat: no-repeat;
-    background-position: center;
+    width: 33%;
+    background-color: #6495ed;
+    margin: 0 auto;
+    padding: 40px;
+    margin: 2px
 }
 
 li {
@@ -29,14 +29,20 @@ li {
 }
 
 .container {
-    padding: 20;
+    padding: 20px;
     overflow: auto;
 }
 
-/*media queries for responsiveness*/
+/*media query for responsiveness*/
 
 @media screen and (min-width: 500px){
     .items {
         height: 400px;
+    }
+}
+
+@media screen and (max-width: 1220px){
+    .items {
+        width: 100%;
     }
 }
