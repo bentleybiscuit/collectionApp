@@ -17,13 +17,26 @@ function getDatafromDB($db) {
     return $result;
 
 }
-function getresult($result) {
+
+//Josh
+function displayItems(array $result) :string {
+    $htmlOut = "";
+    $rowNames = ["commonName" => "Common Name:",
+        "scientificName" => "Scientific Name:",
+        "kingdom" => "Kingdom:",
+        "genomeMbp" => "Genome Size (Mbp):"];
+//first foreach goes to item, second goes for the fields til they end then to next item ie rows then columns
     foreach ($result as $asOrganism) {
-        foreach ($asOrganism as $field=>$value){
-            echo $field . $value;
+        $htmlOut .= "<div class=\"item\">";
+        $htmlOut .="<ul>";
+        foreach ($asOrganism as $key => $attribute) {
+            //if $key is background image then $htmlOut .= "<div class=\"item\" style =
+            $htmlOut .= "<li>$rowNames[$key] $attribute </li>";
+
         }
-
+        $htmlOut .="</ul>";
+        $htmlOut .= "</div>";
     }
+    return $htmlOut;
 }
-
 
