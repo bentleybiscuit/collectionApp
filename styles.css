@@ -14,13 +14,14 @@ body {
 header  {
     text-align: center;
 }
-
+/*adding background images as a nice to have later*/
 .items {
     float: left;
-    width: 20%;
-    background-color: #6495ed;
-    border-color: #271c3c;
+    width: 25%;
+    background-color: #ffe4c4;
     margin: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 li {
@@ -28,7 +29,14 @@ li {
 }
 
 .container {
-    padding: 40;
-    text-align: center;
+    padding: 20;
     overflow: auto;
+}
+
+/*media queries for responsiveness*/
+
+@media screen and (min-width: 500px){
+    .items {
+        height: 400px;
+    }
 }
