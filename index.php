@@ -1,18 +1,93 @@
 <?php
+    require 'functions.php';
+
+//bring all the data in
+//
+
+
+
 ?>
 
 <html>
     <head>
+
         <link rel="stylesheet" type="text/css" href="normalize.css">
         <link rel="stylesheet" type="text/css" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The various guinea pigs of biological science</title>
     </head>
+
     <body>
         <header>
-            <section class="container">
-                <h1>Model organisms: found in the lab and the home</h1>
-            </section>
+            <h1>The various guinea pigs of biological science: collectable in the home or lab</h1>
         </header>
+
+        <section class="container">
+<!--placeholders at the moment-->
+<!--                create divs with lists to float-->
+            <div class="items">
+                <ul>
+                    <li>common name</li>
+                    <li>scientific name</li>
+                    <li>kingdom</li>
+                    <li>genome size Mbp</li>
+<!--                        add background image on each div-->
+                </ul>
+            </div>
+
+            <div class="items">
+                <ul>
+                    <li>common name</li>
+                    <li>scientific name</li>
+                    <li>kingdom</li>
+                    <li>genome size Mbp</li>
+                    <!--                        add background image on each div-->
+                </ul>
+            </div>
+
+            <div class="items">
+                <ul>
+                    <li>common name</li>
+                    <li>scientific name</li>
+                    <li>kingdom</li>
+                    <li>genome size Mbp</li>
+                    <!--                        add background image on each div-->
+                </ul>
+            </div>
+
+            <div class="items">
+                <ul>
+                    <li>common name</li>
+                    <li>scientific name</li>
+                    <li>kingdom</li>
+                    <li>genome size Mbp</li>
+                    <!--                        add background image on each div-->
+                </ul>
+            </div>
+
+            <div class="items">
+                <ul>
+                    <li>common name</li>
+                    <li>scientific name</li>
+                    <li>kingdom</li>
+                    <li>genome size Mbp</li>
+                    <!--                        add background image on each div-->
+                </ul>
+            </div>
+
+            <div class="items">
+                <ul>
+                    <li>common name</li>
+                    <li>scientific name</li>
+                    <li>kingdom</li>
+                    <li>genome size Mbp</li>
+                    <!--                        add background image on each div-->
+                </ul>
+            </div>
+
+
+        </section>
+
 
 
     </body>
@@ -49,6 +124,6 @@ $query = $db->prepare("SELECT `commonName`, `scientificName`, `kingdom`, `genome
 $query->execute();
 //create a variable to catch the results
 $result = $query->fetchAll();
-var_dump($result);
+//var_dump($result);
 ?>
 
