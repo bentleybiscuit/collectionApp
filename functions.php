@@ -11,8 +11,11 @@ function connectDb() {
     return $db;
 }
 
+
 /**
- * returns all the data from modelOrganisms table in $db
+ * @param $db extracts item data from modelOrganisms
+ *
+ * @return associative array for each model organism is returned
  */
 function getDatafromDB($db) {
     $query = $db->prepare("SELECT `image`,`commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
@@ -20,16 +23,12 @@ function getDatafromDB($db) {
     $query->execute();
     //create a variable to catch the results
     $result = $query->fetchAll();
-
     return $result;
-
 }
-
 /**
- * From array $modelOrganisms, strings are returned in separate div for each item
+ * @param array $modelOrganisms for each model organism
  *
- * Each value in array is returned as list item
- *
+ * @return div with data points as a list
  */
 function displayItems(array $modelOrganisms) :string
 {
@@ -48,7 +47,6 @@ function displayItems(array $modelOrganisms) :string
             $output .= '</div>';
 
         } else {
-
             $output .= "There was an error displaying the items on the page";
         }
     }
