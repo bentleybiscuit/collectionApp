@@ -1,12 +1,19 @@
 <?php
 
-//create database connection
+/**
+ * function creates PDO to connect to charlotteCollection database
+ *
+ * returns associative array
+ */
 function connectDb() {
     $db = new PDO('mysql:host=db; dbname=charlotteCollection', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
 }
 
+/**
+ * returns all the data from modelOrganisms table in $db
+ */
 function getDatafromDB($db) {
     $query = $db->prepare("SELECT `image`,`commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
     //this next line executes the query to run the code
@@ -18,30 +25,30 @@ function getDatafromDB($db) {
 
 }
 
+/**
+ * From array $modelOrganisms, strings are returned in separate div for each item
+ *
+ * Each value in array is returned as list item
+ *
+ */
+function displayItems(array $modelOrganisms) :string {
+    $output = '';
 
-function displayItems(array $result) :string {
-    $htmlOut = "";
-    $rowNames = ["image", "commonName" => "Common Name:",
-        "scientificName" => "Scientific Name:",
-        "kingdom" => "Kingdom:",
-        "genomeMbp" => "Genome Size (Mbp):"];
-//first foreach goes to item, second goes for the fields til they end then to next item ie rows then columns
-    foreach ($result as $asOrganism) {
-        $htmlOut .= "<div class=\"item\">";
-        $htmlOut .="<ul>";
-        foreach ($asOrganism as $key => $attribute) {
-            if($key ==="image") {
-                $htmlOut .= '<div class="item" style="background-image: url("'.$attribute.'")>';
-            }
-                else {
-                    $htmlOut .= "<li>$rowNames[$key] $attribute </li>";
-                }
-            }
-         }
-        $htmlOut .="</ul>";
-        $htmlOut .= "</div>";
+    foreach ($modelOrganisms as $org) {
 
-    return $htmlOut;
+        $output .= '<div class= "item">';
+        $output .= '<ul>';
+        $output .= '<li> Common Name: ' . $org['commonName'] . '</li>';
+        $output .= '<li> Scientific Name: ' . $org['scientificName'] . '</li>';
+        $output .= '<li> Kingdom: ' . $org['kingdom'] . '</li>';
+        $output .= '<li> Genome Size/Mbp: ' . $org['genomeMbp'] . '</li>';
+        $output .= '</div>';
+
     }
-
-
+    return $output;
+}
+//ignore this: trying to display background image as part of div
+//$output .= '<div class=\'item\' style=\'background-image: url(\'' . $org['image'] . '\') >';
+//$output .= '<div class=\'item\' style=\'background-image: url(\'';
+//$output .= $org['image'];
+//$output .= '\') >';
