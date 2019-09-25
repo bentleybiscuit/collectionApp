@@ -31,19 +31,26 @@ function getDatafromDB($db) {
  * Each value in array is returned as list item
  *
  */
-function displayItems(array $modelOrganisms) :string {
+function displayItems(array $modelOrganisms) :string
+{
     $output = '';
 
     foreach ($modelOrganisms as $org) {
+        if (array_key_exists('commonName', $org)) {
 
-        $output .= '<div class= "item">';
-        $output .= '<ul>';
-        $output .= '<li> Common Name: ' . $org['commonName'] . '</li>';
-        $output .= '<li> Scientific Name: ' . $org['scientificName'] . '</li>';
-        $output .= '<li> Kingdom: ' . $org['kingdom'] . '</li>';
-        $output .= '<li> Genome Size/Mbp: ' . $org['genomeMbp'] . '</li>';
-        $output .= '</div>';
 
+            $output .= '<div class= "item">';
+            $output .= '<ul>';
+            $output .= '<li> Common Name: ' . $org['commonName'] . '</li>';
+            $output .= '<li> Scientific Name: ' . $org['scientificName'] . '</li>';
+            $output .= '<li> Kingdom: ' . $org['kingdom'] . '</li>';
+            $output .= '<li> Genome Size/Mbp: ' . $org['genomeMbp'] . '</li>';
+            $output .= '</div>';
+
+        } else {
+
+            $output .= "There was an error displaying the items on the page";
+        }
     }
     return $output;
 }
