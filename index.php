@@ -25,22 +25,6 @@
 
         <?php echo $html; ?>
 
-
             </section>
         </body>
     </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
