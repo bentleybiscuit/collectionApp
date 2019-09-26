@@ -49,12 +49,26 @@ function displayItems(array $modelOrganisms) :string
     return $output;
 }
 //need to add doc block
+/**
+ * function to add new item to the collection
+ *
+ * @param array $newValues adds the new values input by user
+ *
+ * @param PDO $db database object
+ */
 function addItems(array $newValues, PDO $db) {
     $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (?, ?, ?, ?)";
     $query = $db->prepare($statement);
     $query->execute([$newValues['commName'], $newValues['sciName'], $newValues['king'], $newValues['genSize']]);
 }
 
+/**
+ * function to validate data input by user for new item
+ *
+ * @param array $newValues data from the form
+ *
+ * @return bool
+ */
 function dataValidation(array $newValues) :bool {
     $valid = true;
     while ($valid===true) {
