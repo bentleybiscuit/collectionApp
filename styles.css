@@ -45,3 +45,15 @@ li {
         margin: 2px 0;
     }
 }
+
+input {
+    display: block;
+    margin: 20px;
+    padding: 20px;
+}
+
+select {
+    display: block;
+    margin: 20px;
+    padding: 20px;
+}
