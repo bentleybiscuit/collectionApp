@@ -22,7 +22,6 @@
             </header>
             <section class="container">
 
-
         <?php echo $html; ?>
 
             </section>

@@ -5,18 +5,17 @@
  *
  * returns associative array
  */
-
 function connectDb() :PDO {
     $db = new PDO('mysql:host=db; dbname=charlotteCollection', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
 }
+
 /**
  * @param $db extracts item data from modelOrganisms
  *
  * @return associative array for each model organism is returned
  */
-
 function getDatafromDB($db) {
     $query = $db->prepare("SELECT `commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
     //this next line executes the query to run the code
@@ -36,7 +35,6 @@ function displayItems(array $modelOrganisms) :string
 
     foreach ($modelOrganisms as $org) {
         if (array_key_exists('commonName', $org)) {
-
             $output .= '<div class= "item">';
             $output .= '<ul>';
             $output .= '<li> Common Name: ' . $org['commonName'] . '</li>';
@@ -44,7 +42,6 @@ function displayItems(array $modelOrganisms) :string
             $output .= '<li> Kingdom: ' . $org['kingdom'] . '</li>';
             $output .= '<li> Genome Size/Mbp: ' . $org['genomeMbp'] . '</li>';
             $output .= '</div>';
-
         } else {
             $output .= "There was an error displaying the items on the page";
         }

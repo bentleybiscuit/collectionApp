@@ -42,5 +42,6 @@ li {
 @media screen and (max-width: 1220px){
     .item {
         width: 100%;
+        margin: 2px 0;
     }
 }
