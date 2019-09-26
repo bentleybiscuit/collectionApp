@@ -60,15 +60,26 @@ function addItems(array $newValues, PDO $db) {
     $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (:name, :sciName, :king, :gene);";
 
     $query = $db->prepare($statement);
-    $commName = filter_var($newValues['commName'], FILTER_SANITIZE_STRING);
-    $sciName = filter_var($newValues['sciName'], FILTER_SANITIZE_STRING);
-    $kingName = filter_var($newValues['king'], FILTER_SANITIZE_STRING);
-    $genName = filter_var($newValues['genSize'], FILTER_SANITIZE_STRING);
 
-    $query->bindParam(':name', $commName);
-    $query->bindParam(':sciName', $sciName);
-    $query->bindParam(':king', $kingName);
-    $query->bindParam(':gene', $genName);
+
+    $query->bindParam(':name', $newValues['commName']);
+    $query->bindParam(':sciName', $newValues['sciName']);
+    $query->bindParam(':king', $newValues['king']);
+    $query->bindParam(':gene', $newValues['genSize']);
     $query->execute();
 }
 
+/**
+ * This function sanitises inputted array
+ *
+ * @param array $data array to be sanitised
+ *
+ * @return array sanitised array
+ */
+function sanitise(array $data) :array {
+
+    foreach ($data as $key=>$item) {
+        $sanitisedData[$key] = filter_var($data[$key], FILTER_SANITIZE_STRING);
+    }
+    return $sanitisedData;
+}

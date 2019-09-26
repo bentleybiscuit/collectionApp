@@ -8,6 +8,7 @@ if (!isset($_GET['allowed'])) {
 $formData = $_POST;
 $dbConnect = connectDb();
 
-addItems($formData, $dbConnect);
-header('Location: index.php');
+$data = sanitise($formData);
 
+addItems($data, $dbConnect);
+header('Location: index.php');
