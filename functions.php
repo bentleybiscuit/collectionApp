@@ -48,3 +48,9 @@ function displayItems(array $modelOrganisms) :string
     }
     return $output;
 }
+//need to add doc block
+function addItems(array $newValues, PDO $db) {
+    $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (?, ?, ?, ?)";
+    $query = $db->prepare($statement);
+    $query->execute([$newValues['commName'], $newValues['sciName'], $newValues['king'], $newValues['genSize']]);
+}
