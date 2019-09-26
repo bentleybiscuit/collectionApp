@@ -48,7 +48,7 @@ function displayItems(array $modelOrganisms) :string
     }
     return $output;
 }
-//need to add doc block
+
 /**
  * function to add new item to the collection
  *
@@ -64,7 +64,6 @@ function addItems(array $newValues, PDO $db) {
     $query->bindParam(':sciName', $newValues['sciName']);
     $query->bindParam(':king', $newValues['king']);
     $query->bindParam(':gene', $newValues['genSize']);
-    $thing = $query->execute();
-    return $thing;
+    $query->execute();
 }
 
