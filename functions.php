@@ -57,43 +57,14 @@ function displayItems(array $modelOrganisms) :string
  * @param PDO $db database object
  */
 function addItems(array $newValues, PDO $db) {
-    $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (?, ?, ?, ?)";
+    $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (:name, :sciName, :king, :gene);";
+
     $query = $db->prepare($statement);
-    $query->execute([$newValues['commName'], $newValues['sciName'], $newValues['king'], $newValues['genSize']]);
+    $query->bindParam(':name', $newValues['commName']);
+    $query->bindParam(':sciName', $newValues['sciName']);
+    $query->bindParam(':king', $newValues['king']);
+    $query->bindParam(':gene', $newValues['genSize']);
+    $thing = $query->execute();
+    return $thing;
 }
 
-/**
- * function to validate data input by user for new item
- *
- * @param array $newValues data from the form
- *
- * @return bool
- */
-function dataValidation(array $newValues) :bool {
-    $valid = true;
-    while ($valid===true) {
-        if (is_string ($newValues['commName']) && (strlen(($newValues['commName'])) <255)) {
-            $valid = true;
-        } else {
-            $valid = false;
-        }
-        if (is_string ($newValues['sciName']) && (strlen(($newValues['sciName'])) <255)) {
-            $valid = true;
-        } else {
-            $valid = false;
-        }
-        if ($newValues['king']==='Animals' || $newValues['king']==='Archaebacteria' ||
-            $newValues['king']==='Eubacteria' || $newValues['king']==='Fungi' || $newValues['king']==='Plants' ||
-            $newValues['king']==='Protists') {
-            $valid = true;
-        } else {
-            $valid = false;
-        }
-
-        if (is_float((float)$newValues['genSize']) && (strlen(($newValues['genSize'])) <11)) {
-            $valid = true;
-        } else {
-            $valid = false;
-        }
-    }   return $valid;
-}

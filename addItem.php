@@ -1,4 +1,4 @@
-<html>
+<html lang="en-GB">
 <head>
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -15,15 +15,15 @@
             <input id="scientific" type="text" name="sciName" required/>
             <label for="kingdom">Kingdom: </label>
             <select id=“kingdom" name="king">
-                <option value=“Animals”>Animals</option>
-                <option value=“Archaebacteria”>Archaebacteria</option>
-                <option value=“Eubacteria”>Eubacteria</option>
-                <option value=“Fungi”>Fungi</option>
-                <option value=“Plants”>Plants</option>
-                <option value=“Protists”>Protists</option>
+                <option value='Animals'>Animals</option>
+                <option value='Archaebacteria'>Archaebacteria</option>
+                <option value='Eubacteria'>Eubacteria</option>
+                <option value='Fungi'>Fungi</option>
+                <option value='Plants'>Plants</option>
+                <option value='Protists'>Protists</option>
             </select>
             <label for="genome">Genome Size Mbp: </label>
-            <input id=“genome“ type="number" step=“0.01” min=“1" name="genSize" required/>
+            <input id=“genome“ type="number" min=“1" max="999" name="genSize" required/>
             <input type="submit" value="Submit"/>
     </form>
     </body>
