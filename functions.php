@@ -50,7 +50,7 @@ function displayItems(array $modelOrganisms) :string
 }
 
 /**
- * function to add new item to the collection
+ * function to add new item to the collection with binding params
  *
  * @param array $newValues adds the new values input by user
  *
@@ -60,10 +60,15 @@ function addItems(array $newValues, PDO $db) {
     $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (:name, :sciName, :king, :gene);";
 
     $query = $db->prepare($statement);
-    $query->bindParam(':name', $newValues['commName']);
-    $query->bindParam(':sciName', $newValues['sciName']);
-    $query->bindParam(':king', $newValues['king']);
-    $query->bindParam(':gene', $newValues['genSize']);
+    $commName = filter_var($newValues['commName'], FILTER_SANITIZE_STRING);
+    $sciName = filter_var($newValues['sciName'], FILTER_SANITIZE_STRING);
+    $kingName = filter_var($newValues['king'], FILTER_SANITIZE_STRING);
+    $genName = filter_var($newValues['genSize'], FILTER_SANITIZE_STRING);
+
+    $query->bindParam(':name', $commName);
+    $query->bindParam(':sciName', $sciName);
+    $query->bindParam(':king', $kingName);
+    $query->bindParam(':gene', $genName);
     $query->execute();
 }
 
