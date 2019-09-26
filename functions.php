@@ -60,10 +60,10 @@ function addItems(array $newValues, PDO $db) {
     $statement = "INSERT INTO `modelOrganisms` (`commonName`, `scientificName`, `kingdom`, `genomeMbp`) VALUES (:name, :sciName, :king, :gene);";
 
     $query = $db->prepare($statement);
-    $query->bindParam(':name', $newValues['commName']);
-    $query->bindParam(':sciName', $newValues['sciName']);
+    $query->bindParam(':name', $newValues['commName'], PDO::PARAM_STR, 255);
+    $query->bindParam(':sciName', $newValues['sciName'],PDO::PARAM_STR, 255);
     $query->bindParam(':king', $newValues['king']);
-    $query->bindParam(':gene', $newValues['genSize']);
+    $query->bindParam(':gene', $newValues['genSize'], PDO::PARAM_INT, 11);
     $query->execute();
 }
 
