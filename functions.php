@@ -54,3 +54,32 @@ function addItems(array $newValues, PDO $db) {
     $query = $db->prepare($statement);
     $query->execute([$newValues['commName'], $newValues['sciName'], $newValues['king'], $newValues['genSize']]);
 }
+
+function dataValidation(array $newValues) :bool {
+    $valid = true;
+    while ($valid===true) {
+        if (is_string ($newValues['commName']) && (strlen(($newValues['commName'])) <255)) {
+            $valid = true;
+        } else {
+            $valid = false;
+        }
+        if (is_string ($newValues['sciName']) && (strlen(($newValues['sciName'])) <255)) {
+            $valid = true;
+        } else {
+            $valid = false;
+        }
+        if ($newValues['king']==='Animals' || $newValues['king']==='Archaebacteria' ||
+            $newValues['king']==='Eubacteria' || $newValues['king']==='Fungi' || $newValues['king']==='Plants' ||
+            $newValues['king']==='Protists') {
+            $valid = true;
+        } else {
+            $valid = false;
+        }
+
+        if (is_float((float)$newValues['genSize']) && (strlen(($newValues['genSize'])) <11)) {
+            $valid = true;
+        } else {
+            $valid = false;
+        }
+    }   return $valid;
+}

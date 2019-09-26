@@ -8,7 +8,7 @@
 <body>
     <h1>Complete the form to add an item to your collection:</h1>
 
-    <form method="post" action="connect.php">
+    <form method="post" action="addToDb.php?allowed=true">
             <label for="common">Common Name: </label>
             <input id=“common“ type="text" name="commName" required/>
             <label for="scientific">Scientific Name: </label>
