@@ -1,4 +1,4 @@
-<html>
+<html lang="en-GB">
 <head>
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -8,23 +8,23 @@
 <body>
     <h1>Complete the form to add an item to your collection:</h1>
 
-<form method="post" action="connect.php">
-    <label for="common">Common Name: </label>
-    <input id=“common“ type="text" name="commName">
-    <label for="scientific">Scientific Name: </label>
-    <input id="scientific" type="text" name="sciName">
-    <label for="kingdom">Kingdom: </label>
-    <select id=“kingdom" name="king">
-    <option value=“Animals”>Animals</option>
-    <option value=“Archaebacteria”>Archaebacteria</option>
-    <option value=“Eubacteria”>Eubacteria</option>
-    <option value=“Fungi”>Fungi</option>
-    <option value=“Plants”>Plants</option>
-    <option value=“Protists”>Protists</option>
-    </select>
-    <label for="genome">Genome Size Mbp: </label>
-    <input id=“genome“ type="number" step=“0.01” min=“1" name="genSize">
-    <input type="submit" value="Submit”>
-        </form>
+    <form method="post" action="addToDb.php?allowed=true">
+            <label for="common">Common Name: </label>
+            <input id=“common“ type="text" name="commName" required/>
+            <label for="scientific">Scientific Name: </label>
+            <input id="scientific" type="text" name="sciName" required/>
+            <label for="kingdom">Kingdom: </label>
+            <select id=“kingdom" name="king">
+                <option value='Animals'>Animals</option>
+                <option value='Archaebacteria'>Archaebacteria</option>
+                <option value='Eubacteria'>Eubacteria</option>
+                <option value='Fungi'>Fungi</option>
+                <option value='Plants'>Plants</option>
+                <option value='Protists'>Protists</option>
+            </select>
+            <label for="genome">Genome Size Mbp: </label>
+            <input id=“genome“ type="number" min=“1" max="999" name="genSize" required/>
+            <input type="submit" value="Submit"/>
+    </form>
     </body>
 </html>

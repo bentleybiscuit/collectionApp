@@ -36,6 +36,7 @@ class StackTest extends TestCase
         $this->assertEquals($case, $output);
 
     }
+    
     public function testMalformeddisplayItems()
     {
         //input to test how deals with a bool
