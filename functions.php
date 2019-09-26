@@ -18,7 +18,7 @@ function connectDb() :PDO {
  */
 
 function getDatafromDB($db) {
-    $query = $db->prepare("SELECT `image`,`commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
+    $query = $db->prepare("SELECT `commonName`, `scientificName`, `kingdom`, `genomeMbp` FROM `modelOrganisms`;");
     //this next line executes the query to run the code
     $query->execute();
     //create a variable to catch the results
