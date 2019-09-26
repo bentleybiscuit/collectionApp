@@ -19,6 +19,7 @@
         <body>
             <header>
                 <h1>The various guinea pigs of biological science: collectable in the home or lab</h1>
+                <a href="addItem.php">Add Item</a>
             </header>
             <section class="container">
 
